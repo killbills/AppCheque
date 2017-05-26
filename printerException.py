@@ -29,9 +29,19 @@ class ErroImpressoraException(Exception):
     def getMessage(self):
         return self.mensagem
 
-class MatrizImpressaoException(Exception):
-    def __init__(self, tipo, conta, cheque):
-        self.mensagem = 'Nao foi possivel imprimir '+ str(tipo) +' do cheque ' + str(cheque) + '. O modelo de cheque da conta corrente ' + str(conta) + ' nao possui esse modelo de impresssao.'
+class MatrizImpressaoVersoException(Exception):
+    def __init__(self, conta, cheque):
+        self.mensagem = 'Nao foi possivel imprimir o verso do cheque ' + str(cheque) + '. O modelo de cheque da conta corrente ' + str(conta) + ' nao possui esse modelo de impresssao.'
+    
+    def __str__(self):
+        return repr(self.mensagem)
+
+    def getMessage(self):
+        return self.mensagem
+
+class MatrizImpressaoCopiaException(Exception):
+    def __init__(self, conta, cheque):
+        self.mensagem = 'Nao foi possivel imprimir a copia do cheque ' + str(cheque) + '. O modelo de cheque da conta corrente ' + str(conta) + ' nao possui esse modelo de impresssao, ou o Parametro 295 esta configurado como \'Nao\'. Verifique as configuracoes da conta corrente e do parametro 295.'
     
     def __str__(self):
         return repr(self.mensagem)

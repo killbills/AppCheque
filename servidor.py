@@ -9,7 +9,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from armanezamentoCheque import ArmanezamentoCheque
 from controleImpressao import ControleImpressao
 from siengeConnectionError import TokenInvalidoException, ErroProcessamentoException, BadUrlException, TimeoutException
-from printerException import ImpressoraSerialNaoConfiguradaException, ImpressoraMatricialNaoConfiguradaException, ErroImpressoraException, MatrizImpressaoException
+from printerException import ImpressoraSerialNaoConfiguradaException, ImpressoraMatricialNaoConfiguradaException, ErroImpressoraException, MatrizImpressaoCopiaException, MatrizImpressaoVersoException
 from mensagemApp import sucesso, falha
 
 HOST_NAME = 'localhost'
@@ -94,11 +94,16 @@ class Handler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(falha(e.getMessage())).encode())
             logging.warn(e.getMessage())
 
-        except MatrizImpressaoException as e:
+        except MatrizImpressaoCopiaException as e:
             self._set_headers_fail()
             self.wfile.write(json.dumps(falha(e.getMessage())).encode())
             logging.warn(e.getMessage())
 
+        except MatrizImpressaoVersoException as e:
+            self._set_headers_fail()
+            self.wfile.write(json.dumps(falha(e.getMessage())).encode())
+            logging.warn(e.getMessage())
+        
         except Exception as e:
             self._set_headers_fail()
             self.wfile.write(json.dumps(falha("Ocorreu um erro inesperado na impressao. Entre em contato com o suporte Sienge")).encode())

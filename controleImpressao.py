@@ -6,7 +6,7 @@ import sys
 
 from armanezamentoCheque import ArmanezamentoCheque
 from configuracao import Configuracao
-from printerException import ImpressoraSerialNaoConfiguradaException, ImpressoraMatricialNaoConfiguradaException, MatrizImpressaoException
+from printerException import ImpressoraSerialNaoConfiguradaException, ImpressoraMatricialNaoConfiguradaException, MatrizImpressaoCopiaException, MatrizImpressaoVersoException
 from printers import PrinterFactory
 
 class ControleImpressao:
@@ -59,11 +59,11 @@ class ControleImpressao:
         if copia == 'True':
             self.matrizImpressao = cheque['printMatrixCopia']
             if not self.matrizImpressao:
-                raise MatrizImpressaoException('a copia', cheque['codigoContaCorrente'], cheque['numeroCheque'])
+                raise MatrizImpressaoCopiaException(cheque['codigoContaCorrente'], cheque['numeroCheque'])
         elif verso == 'True':
             self.matrizImpressao = cheque['printMatrixVerso']
             if not self.matrizImpressao:
-                raise MatrizImpressaoException('o verso', cheque['codigoContaCorrente'], cheque['numeroCheque'])
+                raise MatrizImpressaoVersoException(cheque['codigoContaCorrente'], cheque['numeroCheque'])
         else:
             self.matrizImpressao = cheque['printMatrixCheque']
 
