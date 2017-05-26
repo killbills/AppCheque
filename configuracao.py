@@ -1,14 +1,9 @@
-import json
 import os
 import jsonpickle
-from serial.serialutil import *
-
 
 caminhoArquivo = os.path.join(os.path.dirname(__file__), 'docs\configuracao.json')
 
-
 class Configuracao:
-
 
 	def __init__(self):
 		self.urlSienge = None
