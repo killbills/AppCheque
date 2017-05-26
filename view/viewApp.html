@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <script src="resources/js/jquery-1.12.4.js"></script>
+        <script src="resources/js/jquery.dataTables.min.js"></script>        
+        <script src="resources/js/jquery-ui.min.js"></script>
+        <script src="resources/js/preloader.js"></script>
+		<script src="resources/js/main.js"></script>
+		<script src="resources/js/jquery.mask.js"></script>
+		<script src="resources/js/calendario.js"></script>
+		<script src="resources/js/jquery.fancybox.min.js"></script>
+        <script src="resources/js/notify.min.js"></script>
+		
+        <link href="resources/css/fonte-roboto.css" rel="stylesheet"  type="text/css">
+		<link href="resources/css/jquery-ui.min.css" rel="stylesheet"  type="text/css">                
+        <link href="resources/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+        <link href="resources/css/preloader.css" rel="stylesheet" type="text/css">
+		<link href="resources/css/estilo.css" rel="stylesheet"  type="text/css">
+		<link href="resources/css/font-awesome.min.css" rel="stylesheet"  type="text/css">		
+		<link href="resources/css/jquery.fancybox.min.css"rel="stylesheet"  type="text/css">	
+
+        <meta charset="UTF-8">
+        
+    </head>
+
+    <body>
+
+        <div id="cabecalho">
+
+            <img src="resources/imgs/logo.png" />           
+
+        </div>
+
+        <div id="menu">
+
+			<a href="#" id="btn-icone-cheque" title="Cheques para impressão">
+                <img id="icone-cheque" src="resources/imgs/cheque.png" class="ativo" />
+            </a>
+
+            <a href="#" id="btn-icone-ferramentas" title="Configuração">
+                <img id="icone-ferramentas" src="resources/imgs/ferramentas.png" />
+            </a>
+			
+			<div id="sair-sistema">
+                <a id="btn-sair-sistema" href="#">
+                    <img style="width: 45px" title="Sair" src="resources/imgs/sair.png"  />
+                </a>
+            </div>
+        </div>
+
+        <div id="conteudo-pagina">
+
+            <div id="cheques-para-impressao"> 
+				
+				<div style="display: none;width: 530px; overflow-x: hidden;" id="hidden-content">
+				  <h2></h2>
+				  <p></p>
+				</div>
+					
+				<a data-fancybox data-src="#hidden-content" style="display: none;" id="mensagem" href="javascript:;" class="btn"></a>
+				
+                <h1>Cheques para Impressão</h1>
+
+                <h2>Parâmetros da Consulta</h2>
+
+                <table width="100%">
+                    <tr>
+                        <td width="150" align="right"><span class="label">Período de emissão:</span></td>
+                        <td><input type="text" style="width: 85px" id="dataInicio"> &nbsp; a <input type="text" style="width: 85px" id="dataFinal"></td>
+                    </tr>
+                </table>
+
+                <div class="painel-botoes">
+                    <input type="button" id="btn-consultar-cheque" value="Consultar" class="botao">
+                </div>
+
+                <h2>Resultado</h2>
+                
+                <table id="grid-cheques" class="hover" cellspacing="0" width="100%"></table>
+
+                <div  style="margin-bottom: 83px;margin-top: 25px;" class="painel-botoes">
+                   <span id="grid-quantidade-cheques"></span> <input type="button" id="btn-imprimir-copia" value="Imprimir copia cheque" class="botao"> <input type="button" id="btn-imprimir-verso" value="Imprimir verso cheque" class="botao"> <input type="button" id="btn-imprimir-cheque" value="Imprimir cheque" class="botao">
+                </div>                
+                
+            </div>
+
+            <div id="cheques-configuracao"> 
+              
+                <h1>Configuração</h1>
+
+                <table width="100%">
+                    <tr>
+                        <td width="150" align="right"><span class="label">Url:</span></td>
+                        <td><input type="text" style="width: 100%" id="url-sienge" placeholder="http://{Endereço Sienge}/sienge/resteasy/CXA/cheques/"></td>
+                        <td width="100"></td>
+                    </tr>
+                    <tr>
+                        <td width="150" align="right"><span class="label">Token:</span></td>
+                        <td><input type="text" style="width: 100%" id="token"></td>
+                        <td width="100"></td>
+                    </tr>
+                    <tr>
+                        <td width="150">
+                        <td><span style="width: 100%" id="h-configuracao"></td>
+                        <td width="100"></td>
+                    </tr>
+                </table>
+                </br>
+                </br>
+                
+                <h2>Impressora Matricial</h2>
+                
+                <table width="100%">
+                    <tr>					
+                        <td width="150" align="right"><span class="label">Porta:</span></td>						
+						<td>
+							<select id="porta-matricial">
+								<option value="" selected="selected">-- Selecione --</option>
+								<option value="LPT1">LPT1</option>
+								<option value="LPT2">LPT2</option>
+								<option value="LPT3">LPT3</option>
+								<option value="OUTRA">OUTRA</option>
+							</select>
+						</td>
+                        <td width="100"></td>
+                    </tr>
+                    <tr>
+                        <td width="150" align="right"><span class="label">Outra:</span></td>
+                        <td>
+							<input type="text" style="width: 85px" id="porta-matricial-outra">
+						</td>
+                        <td width="100"></td>
+                    </tr>			
+                </table>   
+
+                <br/>
+                <br/>
+
+                <h2>Impressora Cheque</h2>
+
+                <table width="100%">
+                   <tr>
+                        <td width="150" align="right"><span class="label">Impressora:</span></td>
+                        <td>
+							<select id="impressora-cheque">
+								<option value="" selected="selected">-- Selecione --</option>
+                                <option value="CheckPronto">CHECKPRONTO</option>
+								<option value="ImpreCheq">IMPRECHEQ</option>
+								<option value="Bematech">BEMATECH</option>
+								<option value="FastCheck">FASTCHECK</option>
+								<option value="PratikCheque">PRATIKCHEQUE</option>
+								<option value="PertoCheck">PERTOCHEK</option>
+								<option value="Elgin">ELGIN</option>
+                                <option value="EasyAp40N">EASYAP40N</option>
+							</select>
+						</td>
+                        <td width="100"></td>
+                    </tr>
+                    <tr>
+                        <td width="150" align="right"><span class="label">Porta:</span></td>
+                        <td>
+							<select id="porta-serial">
+								<option value="" selected="selected">-- Selecione --</option>
+								<option value="COM1">COM1</option>
+								<option value="COM2">COM2</option>
+								<option value="COM3">COM3</option>
+								<option value="COM4">COM4</option>
+								<option value="OUTRA">OUTRA</option>
+							</select>
+						</td>
+                        <td width="100"></td>
+                    </tr>
+                    <tr>
+                        <td width="150" align="right"><span class="label">Outra:</span></td>
+                        <td>
+							<input type="text" style="width: 85px" id="porta-serial-outra">
+						</td>
+                        <td width="100"></td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 10px;" class="painel-botoes">
+                    <input type="button" id="salvar-configuracao" value="Salvar" class="botao">
+                </div>
+
+            </div>
+
+        </div>    
+
+		<div id="rodape"> 
+                <h5>Made with <i class="fa fa-heart" style="color: #c4051c;" aria-hidden="true"></i> by Unicers</h5>
+        </div>		
+		
+    </body>
+
+</html>

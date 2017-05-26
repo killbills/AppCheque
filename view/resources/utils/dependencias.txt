@@ -1,0 +1,11 @@
+#
+####### dependencias do projeto pyCheque #######
+# USAR pip install -r .\resources\utils\dependencias.txt PARA INSTALAR:
+
+###### request - API client
+requests
+cefpython3
+pyparallel
+jsonpickle
+pyserial
+twine

@@ -1,0 +1,316 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: roboto;
+    font-weight: 400;
+	outline: none;
+}
+
+body {
+    font-size: 13px;
+    overflow-x: hidden;
+}
+
+/* cabecalho */
+
+#cabecalho {
+    padding: 8px !important;
+    height: 48px;
+    background: #FFF;
+    z-index: 10;
+    position: fixed;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    top: 0;
+    box-shadow: 2px 1px 3px 0px rgba(50, 50, 50, 0.73);
+}
+
+#sair-sistema {
+    position: fixed;
+    right: 30px;
+    top: 10px;
+}
+
+#sair-sistema img {
+    width: 25px;
+}
+
+#sair-sistema a {
+    text-decoration: none;
+}
+
+#sair-sistema span {
+    top: -16px;
+    position: relative;
+    left: 4px;
+    color: #666;
+}
+
+/* menu */
+
+#menu {
+    width: 65px;
+    position: fixed;
+    height: 100%;
+    margin: -20px 0 0 0;
+    background: #2a2e35 !important;
+    z-index: 10;
+}
+
+
+
+#menu img {
+    width: 61px;
+    opacity: .2;
+    transition: .5s;
+}
+
+#menu img:hover, #menu img.ativo {
+    opacity: 1;
+}
+
+/* CONTEUDO */
+
+#conteudo-pagina {
+    position: relative;
+    margin: 100px auto 0;
+    width: 85%;
+	padding-left: 20px;
+
+}
+
+@media only screen and (max-width: 990px) {
+
+	#menu {
+		width: 100%;
+		position: fixed;
+		height: 64px;
+		margin: -84px 0 0 140px;
+		background: #2a2e35 !important;
+		z-index: 10;
+	}	
+	#conteudo-pagina {
+		padding-left: 0;
+		position: relative;
+		margin: 100px 20px 0px;
+		width: 90%;
+		padding-left: 20px;
+	}
+}
+
+#conteudo-pagina h1 {
+    position: relative;
+    background: none !important;
+    font-size: 22px;
+    color: #333;
+    font-weight: 300;
+    padding: 20px 15px 10px 15px;
+    text-transform: uppercase;
+    min-height: 22px;
+    margin-top: -15px;
+    margin-left: -15px;
+    margin-bottom: 10px;
+    line-height: 24px;
+}
+
+#conteudo-pagina h2 {
+    position: relative;
+    background: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: #666 !important;
+    margin: 15px 0 25px 0;
+    padding: 4px 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ddd;
+}
+
+#conteudo-pagina h2:before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    width: 60px;
+    height: 3px;
+    background: #c4051c;
+}
+
+#conteudo-pagina input {
+    height: 22px;
+    margin-left: 4px;
+    border-radius: 2px;
+    padding: 5px;
+    border: 1px solid #9A9A9A;
+    box-sizing: border-box;
+}
+
+#conteudo-pagina select {
+    height: 22px;
+    margin-left: 4px;
+    border-radius: 2px;
+    border: 1px solid #9A9A9A;
+    box-sizing: border-box;
+}
+
+#cheques-configuracao select {
+	width: 100%;
+}
+
+#conteudo-pagina .label {
+    position: relative;
+    font-size: 12px !important;
+    top: 1px;
+    font-weight: 400;
+    color: #646464;
+}
+
+#conteudo-pagina .habilitar {
+	position: relative;
+    font-size: 12px !important;
+    top: -7px;
+    font-weight: 400;
+    color: #000;
+}
+
+#conteudo-pagina .painel-botoes {
+    text-align: right;
+	margin-top: 12px;
+}
+
+#conteudo-pagina .botao {
+    height: 28px !important;
+    padding: 0 10px !important;
+    background-image: none !important;
+    background: #c4051c;
+    border-radius: 2px;
+    font-size: 14px !important;
+    height: 28px;
+    text-transform: uppercase;
+    color: #fff !important;
+    cursor: pointer;
+    font-family: inherit;
+    border: 0;
+    font: 11px Arial, sans-serif;
+    overflow: visible;
+}
+
+#conteudo-pagina .botao:hover {   
+    background: #f4051c;
+}
+
+#cheques-para-impressao {
+    display: block;
+}
+
+#cheques-configuracao {
+    display: none;
+}
+
+/* GRID */
+
+#grid-cheques {
+    top: 25px;
+    position: relative;
+    font-size: 11px;
+}
+
+#grid-cheques_info {
+    top: 19px;
+	float: left;
+    position: relative;
+    font-size: 11px;
+}
+
+#grid-cheques_paginate {
+    top: 23px;
+    position: relative;
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+}
+
+#grid-cheques .odd td:last-child, #grid-cheques .even td:last-child {
+    text-align: right;
+}
+
+#grid-cheques tfoot {
+    display: table-header-group;
+}
+
+#grid-cheques tfoot input {
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+#grid-cheques tr  {
+    cursor: pointer;
+}
+
+#grid-quantidade-cheques {
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+#grid-cheques tr .printed {
+    cursor: pointer;
+}
+
+/* RODAPÉ */
+
+#rodape {
+    width: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.3);
+    left: 0;
+    bottom: 0;
+    height: 35px;
+    z-index: 0;
+}
+
+#rodape h5 {
+    font-weight: 500;
+    margin: 11px 0 0 75px;
+    color: #000;
+}
+
+/* JQUERY */
+
+.ui-datepicker-trigger {
+    top: 6px;
+    left: 3px;
+    cursor: pointer;
+    position: relative;
+
+}
+
+#hidden-content .sucesso {
+	background: #90EE90;
+    margin: 0;
+    width: 107%;
+    margin: -24px 0 10px -24px;
+    position: relative;
+    float: left;
+	font-weight: 300;
+	color: #000;
+    padding: 8px 8px 8px 25px;	
+} 
+
+#hidden-content .alerta {
+	background: #FF6666;
+    margin: 0;
+    width: 107%;
+	font-weight: 300;
+    margin: -24px 0 10px -24px;
+    position: relative;
+    float: left;
+	color: #FFF;
+    padding: 8px 8px 8px 25px;	
+}
+
+#hidden-content p{
+	font-size: 13px;
+}
+
+#hidden-content b{
+    font-weight: bold;
+}
