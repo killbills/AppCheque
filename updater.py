@@ -2,8 +2,12 @@ import requests
 import json
 import os
 import jsonpickle
+import urllib2
+from datetime import datetime
+import time
 
-localVersionFile = os.path.join(os.path.dirname(__file__), 'docs\\version.json')
+localPath = os.path.dirname(__file__)
+localVersionFile = os.path.join(localPath, 'docs\\version.json')
 
 class Updater:
 
@@ -23,8 +27,18 @@ class Updater:
 
     def updade(self):
         if self.checkVersion():
-            response = requests.get(self.url+'main.py')
-            print(response.content)
+            urlFiles = self.url + self.updatedFiles
+            files = json.loads(json.dumps(requests.get(urlFiles).json()))
+            for f in files['files']:
+                updatedFile = urllib2.urlopen(self.url+str(f['file']))
+                with open (os.path.join(localPath, str(f['file'])), 'w') as output:
+                    output.write(updatedFile.read())
+            
 
 
-print(Updater().updade())
+
+def updateVersion():
+    with open(os.path.join(localPath, 'docs\\lastUpdate.json'), 'r') as file:
+        lastUpdate = jsonpickle.decode(file.read())
+
+        Updater.update()
