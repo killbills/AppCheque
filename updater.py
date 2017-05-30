@@ -25,7 +25,7 @@ class Updater:
 
         return response == localVerion
 
-    def updade(self):
+    def update(self):
         if self.checkVersion():
             urlFiles = self.url + self.updatedFiles
             files = json.loads(json.dumps(requests.get(urlFiles).json()))
@@ -41,4 +41,4 @@ def updateVersion():
     with open(os.path.join(localPath, 'docs\\lastUpdate.json'), 'r') as file:
         lastUpdate = jsonpickle.decode(file.read())
 
-        Updater.update()
+        Updater().update()

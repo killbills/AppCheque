@@ -10,7 +10,7 @@ def iniciarAplicativo():
 	updater = threading.Thread(target = updateVersion)
 	servico.start()
 	app.start() 
-	updateVersion.start()
+	updater.start()
 
 
 iniciarAplicativo()
