@@ -26,7 +26,7 @@ class Updater:
         return response == localVerion
 
     def update(self):
-        if self.checkVersion():
+        if not self.checkVersion():
             urlFiles = self.url + self.updatedFiles
             files = json.loads(json.dumps(requests.get(urlFiles).json()))
             for f in files['files']:
