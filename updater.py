@@ -7,14 +7,14 @@ from datetime import datetime
 import time
 
 localPath = os.path.dirname(__file__)
-localVersionFile = os.path.join(localPath, 'docs\\version.json')
+localVersionFile = os.path.join(localPath, 'docs'+ os.sep +'version.json')
 
 class Updater:
 
     def __init__(self):
         self.url = 'https://raw.githubusercontent.com/killbills/AppCheque/master/'
-        self.versionFile = 'docs/version.json'
-        self.updatedFiles = 'docs/files.json'
+        self.versionFile = 'docs'+ os.sep +'version.json'
+        self.updatedFiles = 'docs'+ os.sep +'files.json'
 
     def checkVersion(self):
         urlVersion = self.url + self.versionFile
@@ -38,7 +38,7 @@ class Updater:
 
 
 def updateVersion():
-    with open(os.path.join(localPath, 'docs\\lastUpdate.json'), 'r') as file:
+    with open(os.path.join(localPath, 'docs'+ os.sep +'lastUpdate.json'), 'r') as file:
         lastUpdate = jsonpickle.decode(file.read())
 
         Updater().update()

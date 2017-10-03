@@ -1,7 +1,7 @@
 import os
 import jsonpickle
 
-caminhoArquivo = os.path.join(os.path.dirname(__file__), 'docs\configuracao.json')
+caminhoArquivo = os.path.join(os.path.dirname(__file__), 'docs'+ os.sep +'configuracao.json')
 
 class Configuracao:
 

@@ -3,7 +3,7 @@ import jsonpickle
 
 
 caminhoArquivo = os.path.join(
-    os.path.dirname(__file__), 'docs\cheques.json')
+    os.path.dirname(__file__), 'docs'+ os.sep +'cheques.json')
 
 
 class ArmanezamentoCheque:

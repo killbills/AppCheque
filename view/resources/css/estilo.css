@@ -156,8 +156,9 @@ body {
 }
 
 #conteudo-pagina .label {
+    font-family: roboto;
     position: relative;
-    font-size: 12px !important;
+    font-size: 14px !important;
     top: 1px;
     font-weight: 400;
     color: #646464;
@@ -174,6 +175,22 @@ body {
 #conteudo-pagina .painel-botoes {
     text-align: right;
 	margin-top: 12px;
+}
+
+#btn-imprimir-copia{
+    background:#CC5466 !important;
+} 
+
+#btn-imprimir-verso{
+    background:#CC5466 !important;
+} 
+
+#btn-imprimir-copia:hover{  
+    background: #f4051c !important;
+}
+
+#btn-imprimir-verso:hover{  
+    background: #f4051c !important;
 }
 
 #conteudo-pagina .botao {
@@ -247,7 +264,6 @@ body {
 }
 
 #grid-quantidade-cheques {
-    font-size: 11px;
     margin-right: 10px;
 }
 

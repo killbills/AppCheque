@@ -45,7 +45,10 @@ class ControleImpressao:
     def imprimirCheques(self, copia, verso):
         self.validaConfiguracaoImpressora()
 
-        for cheque in self.armazenamentoJsonCheques.cheques:
+        cheque_list = self.armazenamentoJsonCheques.cheques
+        cheques_sorted = sorted(cheque_list, key=lambda cheque_list: cheque_list['id'])
+
+        for cheque in cheques_sorted:
             if cheque['id'] in self.ids:            
                 self.validaMatrizImpressao(cheque, verso, copia)
 

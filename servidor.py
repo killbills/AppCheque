@@ -111,7 +111,7 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def iniciarServidor():
-    path=os.path.join(os.path.dirname(__file__), 'logs\\appCheque.log')
+    path=os.path.join(os.path.dirname(__file__), 'logs'+ os.sep +'appCheque.log')
     logging.basicConfig(filename=path, level=logging.INFO)
     logging.info('Started - ' + time.strftime('%c'))
     server = HTTPServer((HOST_NAME, PORT_NUMBER), Handler)
