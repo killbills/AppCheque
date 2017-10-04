@@ -32,9 +32,9 @@
         },
         {
             "file": "viewApp.py"
-        }
+        },
         {
             "file": "view/resources/js/main.js"
-        },
+        }
     ]
 }
