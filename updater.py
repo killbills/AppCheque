@@ -13,8 +13,8 @@ class Updater:
 
     def __init__(self):
         self.url = 'https://raw.githubusercontent.com/killbills/AppCheque/master/'
-        self.versionFile = 'docs'+ os.sep +'version.json'
-        self.updatedFiles = 'docs'+ os.sep +'files.json'
+        self.versionFile = 'docs/version.json'
+        self.updatedFiles = 'docs/files.json'
 
     def checkVersion(self):
         urlVersion = self.url + self.versionFile
