@@ -18,8 +18,8 @@ WINDOWS_UTILS = cef.WindowUtils()
 
 class Gui(object):
     def window(self):
-        path= os.path.join(os.path.dirname(__file__), 'view\\viewApp.html')
-        browser = cef.CreateBrowserSync(url=path, window_title="Cheques",)
+        path= os.path.join(os.path.dirname(__file__), 'view'+ os.sep +'viewApp.html')
+        browser = cef.CreateBrowserSync(url='file:///'+path, window_title="Cheques",)
         set_javascript_bindings(browser)
         cef.MessageLoop()
 

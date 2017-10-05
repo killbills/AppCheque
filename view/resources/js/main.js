@@ -236,7 +236,58 @@ $(document).ready(function(){
 		sairApp();
 	});
 
+	$('#dataInicio').blur(function() {
+		let input = $('#dataInicio');
+		if ($(input).val().length > 0 && $(input).val().length < 10) {
+			autoCompleteDate(input);
+		}
+	});
+
+	$('#dataFinal').blur(function() {
+		let input = $('#dataFinal');
+		if ($(input).val().length > 0 && $(input).val().length < 10) {
+			autoCompleteDate(input);
+		}
+	});
+
 }); 
+
+function autoCompleteDate(input) {
+	let inputValue = $(input).val();
+
+	if (inputValue == '0') {
+		$(input).val($.datepicker.formatDate('dd/mm/yy', new Date()));
+		return;
+	} 
+	
+	let dateArray = inputValue.split('/');
+	let date = new Date();
+
+	if (dateArray.length == 1) {
+		let day = dateArray[0];
+		$(input).val(("0" + day).substr(-2) + "/" 
+		+ ("0" + (date.getMonth()+1)).substr(-2) + "/" + date.getFullYear());
+		return;
+	}
+	
+	if (dateArray.length == 2) {
+		let day = dateArray[0];
+		let mon = dateArray[1];
+		$(input).val(("0" + day).substr(-2) + "/" 
+		+ ("0" + mon).substr(-2) + "/" + date.getFullYear());
+		return;
+	}
+
+	if (dateArray.length == 3 && dateArray[2].length == 2) {
+		let day = dateArray[0];
+		let mon = dateArray[1];
+		let year = dateArray[2];
+		$(input).val(("0" + day).substr(-2) + "/" 
+		+ ("0" + mon).substr(-2) + "/20" + year);
+		return;
+	}
+
+}
 
 
 function gerarParametrosParaConsultaCheques() {

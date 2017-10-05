@@ -1,1 +1,40 @@
-{"files": [{"file":"docs/version.json"},{"file":"view/viewApp.html"}]} 
+{
+    "files": [
+        {
+            "file": "docs/version.json"
+        },
+        {
+            "file": "docs/lastUpdate.json"
+        },
+        {
+            "file": "docs/files.json"
+        },
+        {
+            "file": "view/viewApp.html"
+        },
+        {
+            "file": "view/resources/css/estilo.css"
+        },
+        {
+            "file": "armanezamentoCheque.py"
+        },
+        {
+            "file": "configuracao.py"
+        },
+        {
+            "file": "controleImpressao.py"
+        },
+        {
+            "file": "servidor.py"
+        },
+        {
+            "file": "updater.py"
+        },
+        {
+            "file": "viewApp.py"
+        },
+        {
+            "file": "view/resources/js/main.js"
+        }
+    ]
+}
