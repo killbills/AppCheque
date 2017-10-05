@@ -54,6 +54,7 @@ class ControleImpressao:
 
                 if cheque['tipoImpressora'] == "Matricial":
                     self.imprimirMatricial()
+                    time.sleep(1)
                 else:
                     self.imprimirCheque()
 
