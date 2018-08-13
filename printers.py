@@ -56,6 +56,8 @@ class PrinterFactory:
             printer = EasyAp40N(porta)
         if modelo == 'PertoCheck':
             printer = PertoCheck(porta)
+        if modelo == 'Menno':
+            printer = Menno(porta)
 
         printer.serialSetup()
 
@@ -198,6 +200,33 @@ class EasyAp40N(ImpressoraCheque):
             self.serial.close()
         else:
             raise ErroImpressoraException
+
+
+class Menno(ImpressoraCheque):
+    
+    def serialSetup(self):
+        self.serial.baudrate = 9600
+        self.serial.parity = serial.PARITY_NONE
+        self.serial.stopbits = serial.STOPBITS_ONE
+        self.serial.bytesize = serial.EIGHTBITS
+        logging.info(self.serial)
+
+    def printCheck(self, matrizCheque):
+        super(Menno, self).printCheck(matrizCheque)
+        if self.serial.is_open:
+            decodedMatriz = base64.b64decode(matrizCheque)
+            self.serial.write(chr(27) + chr(160) + decodedMatriz.split('\n')[0] + chr(13))
+            self.serial.write(chr(27) + chr(161) + decodedMatriz.split('\n')[1] + chr(13))
+            self.serial.write(chr(27) + chr(162) + decodedMatriz.split('\n')[2] + chr(13))
+            self.serial.write(chr(27) + chr(163) + decodedMatriz.split('\n')[3] + chr(13))
+            self.serial.write(chr(27) + chr(164) + decodedMatriz.split('\n')[4] + chr(13))
+            self.serial.write(chr(27) + chr(176)+ chr(13))
+            time.sleep(.3)
+            self.serial.flushOutput()
+            self.serial.close()
+        else:
+            raise ErroImpressoraException
+
 
 class PertoCheck(ImpressoraCheque):
 
